@@ -1,1 +1,26 @@
-<p>card-form works!</p>
+<div class="form-container">
+  <label for="name">C4RDHOLDER NAME</label>
+  <input type="text" formControlName="name" class="input" placeholder="e.g. Jane Appleseed">
+
+  <label for="number">C4RD NUMBER</label>
+  <input type="number" formControlName="number" class="input" placeholder="e.g. 1234 5678 9123 0000">
+
+
+  <div class="exp-date-and-cvc-wrapper">
+
+    <div class="exp-month-and-exp-year-wrapper">
+      <label>EXP. DATE (MM/YY)</label>
+      <div>
+        <input type="number" formControlName="expDateMonth" class="input month-and-year-input" placeholder="MM">
+        <input type="number" formControlName="expDateYear" class="input month-and-year-input" placeholder="YY">
+      </div>
+    </div>
+
+    <div class="cvc-wrapper">
+      <label for="cvc">CVC</label>
+      <input type="number" formControlName="cvc" class="input" placeholder="e.g. 123">
+    </div>
+  </div>
+
+  <button class="confirm-btn">Confirm</button>
+</div>

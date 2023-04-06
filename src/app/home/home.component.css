@@ -1,6 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
 .left-background {
   background-image: url(../../assets/bg-main-desktop.png);
   background-size: cover;
   height: 100vh;
   width: 483px;
+}
+
+.right-background {
+  min-width: 641px;
+  width: 100%;
 }
