@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { concatWith, lastValueFrom } from 'rxjs';
+import { CardFormService } from '../shared/services/card-form.service';
 
 
 @Component({
@@ -9,10 +11,10 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
 })
 export class CardFormComponent {
   form!: FormGroup;
-  errorMessage!: string;
 
   constructor(
     private formBuilder: FormBuilder,
+    private cardFormService: CardFormService,
   ) {
     this.form = this.formBuilder.group({
       name: [null, [Validators.required]],
@@ -28,6 +30,26 @@ export class CardFormComponent {
   get expDateMonth() { return this.form.get('expDateMonth'); }
   get expDateYear() { return this.form.get('expDateYear'); }
   get cvc() { return this.form.get('cvc'); }
+
+  async setCardFormName(input: string):Promise<void> {
+      this.cardFormService.setName(input);
+  }
+
+  async setCardFormNumber(input: string):Promise<void> {
+    this.cardFormService.setNumber(input);
+  }
+
+  async setCardFormExpDateMonth(input: string):Promise<void> {
+    this.cardFormService.setExpDateMonth(input);
+  }
+
+  async setCardFormExpDateYear(input: string):Promise<void> {
+    this.cardFormService.setExpDateYear(input);
+  }
+
+  async setCardFormCvc(input: string):Promise<void> {
+    this.cardFormService.setCvc(input);
+  }
 
   isFormValid(): boolean {
     const valid = this.form.valid;
@@ -87,4 +109,5 @@ export class CardFormComponent {
       //this.isLoading = false;
     //}
   }
+
 }
