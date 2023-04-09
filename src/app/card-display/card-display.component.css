@@ -1,9 +1,4 @@
 .cards-container {
-  margin: 0;
-  position:relative;
-  top: 50%;
-  left: 80%;
-  transform: translate(-50%, -50%);
   color: #f9f9f9;
 }
 
@@ -22,6 +17,17 @@
   margin-top: 32px;
   margin-left: 32px;
   margin-bottom: 60px;
+  width: 84px;
+  height: 47px;
+}
+
+.card-logo-mini {
+  margin-top: 32px;
+  margin-left: 32px;
+  margin-bottom: 60px;
+  width: 84px;
+  height: 47px;
+  display: none;
 }
 
 .card-number {
@@ -58,4 +64,95 @@
   margin-right: 60px;
   padding-bottom: 3px;
   letter-spacing: 2px;
+}
+
+@media only screen and (max-width: 1030px) {
+  .cards-container {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 30px;
+  }
+
+  .card-front {
+    background-image: url(../../assets/bg-card-front-mini.png);
+    background-size: cover;
+    width: 246px;
+    height: 135px;
+    margin-bottom: 0;
+    z-index: 1;
+    align-self: center;
+    position: relative;
+    bottom: 59px;
+    right: 30px;
+  }
+
+  .card-back {
+    background-image: url(../../assets/bg-card-back-mini.png);
+    background-size: cover;
+    position: relative;
+    right: 20px;
+    width: 246px;
+    height: 135px;
+  }
+
+  .card-cvc {
+    font-size: 0.5em;
+    padding-bottom: 3px;
+    position: relative;
+    left: 30px;
+  }
+
+  .card-logo {
+    display: none;
+  }
+
+  .card-logo-mini {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 8px;
+    color: #f9f9f9;
+    width:50px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 12px;
+    left: 12px;
+  }
+
+  .big-circle {
+    background-color: #f9f9f9;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+  }
+
+  .mini-circle {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #f9f9f9;
+    border-radius: 50%;
+  }
+
+  .card-number {
+    font-size: 12px;
+    position: relative;
+    top: 50px;
+    right: 15px;
+  }
+
+  .cardholder-name {
+    font-size: 0.6em;
+    position: relative;
+    top: 35px;
+    right: 15px;
+  }
+
+  .card-exp-date {
+    font-size: 0.6em;
+    position: relative;
+    top: 35px;
+    left: 14px;
+  }
 }

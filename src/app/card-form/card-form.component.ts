@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { concatWith, lastValueFrom } from 'rxjs';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { CardFormService } from '../shared/services/card-form.service';
-
 
 @Component({
   selector: 'app-card-form',
@@ -11,11 +9,14 @@ import { CardFormService } from '../shared/services/card-form.service';
 })
 export class CardFormComponent {
   form!: FormGroup;
+  showForm!: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private cardFormService: CardFormService,
   ) {
+    this.showForm = true;
+
     this.form = this.formBuilder.group({
       name: [null, [Validators.required]],
       number: [null, [Validators.required, this.numberValidator]],
@@ -55,7 +56,6 @@ export class CardFormComponent {
     const valid = this.form.valid;
     if (!valid) {
       this.form.markAllAsTouched();
-      alert('There are invalid fields in the form!');
     }
     return valid;
   }
@@ -94,20 +94,12 @@ export class CardFormComponent {
   }
 
   confirm(): void {
-
-    //try {
-      //this.isLoading = true;
-      if (this.isFormValid()) {
-        const data = this.form.value;
-        alert('Contact saved!');
-        //this.snackBar.open('Contact saved!', undefined, { duration: 3000 });
-
-      }
-    //} catch ({ error }) {
-      //apiErrorHandler(this.snackBar, error as BaseError);
-   // } finally {
-      //this.isLoading = false;
-    //}
+    if (this.isFormValid()) {
+      this.showForm = false;
+     }
   }
 
+  reloadPage(): void{
+    window.location.reload()
+  }
 }
