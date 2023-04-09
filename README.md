@@ -33,11 +33,11 @@ Users should be able to:
 
 ### Screenshot Desktop
 
-![](C:\Users\wesle\source\repos\interactive-form\interactive-form\src\assets\screenshot.png)
+![](./src/assets/screenshot.png)
 
  <h3>Screenshot Mobile</h3>
 
-![](C:\Users\wesle\source\repos\interactive-form\interactive-form\src\assets\screenshot-mobile.png)
+![](./src/assets/screenshot-mobile.png)
 
 ### Links
 
