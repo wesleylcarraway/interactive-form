@@ -1,27 +1,92 @@
-# InteractiveForm
+# Frontend Mentor - Interactive card details form solution
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
+This is a solution to the [Interactive card details form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Development server
+## Table of contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-## Code scaffolding
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Overview
 
-## Build
+### The challenge
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Users should be able to:
 
-## Running unit tests
+- Fill in the form and see the card details update in real-time
+- Receive error messages when the form is submitted if:
+  - Any input field is empty
+  - The card number, expiry date, or CVC fields are in the wrong format
+- View the optimal layout depending on their device's screen size
+- See hover, active, and focus states for interactive elements on the page
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Screenshot Desktop
 
-## Running end-to-end tests
+![](C:\Users\wesle\source\repos\interactive-form\interactive-form\src\assets\screenshot.png)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ <h3>Screenshot Mobile</h3>
 
-## Further help
+![](C:\Users\wesle\source\repos\interactive-form\interactive-form\src\assets\screenshot-mobile.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Links
+
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Media queries
+- Flexbox
+- TypeScript
+- Angular
+- Angular Reactive forms
+- Rxjs
+
+### What I learned
+
+I developed myself mainly in terms of transferring data from one component to another through Angular's Behavior Subject.
+
+```js
+//on service class
+private name$ = new BehaviorSubject<any>({});
+selectedName$ = this.name$.asObservable();
+
+setName(name: any) {
+	this.name$.next(name);
+}
+
+//set value from any component
+async setCardFormName(input: string):Promise<void> {
+	this.cardFormService.setName(input);
+}
+
+//on another component, subscribe at the method from service class to get the value
+this.cardFormService.selectedName$.subscribe((value) => {
+	this.selectedName = value;
+});
+
+```
+
+### Continued development
+
+I would like to delve deeper into web design for mobile devices, and create more and more responsive applications, on projects where I could use component-based frameworks.
+
+## Author
+
+- Website - [Marcelo Wesley](https://www.your-site.com)
+- Frontend Mentor - [@wesleylcarraway](https://www.frontendmentor.io/profile/yourusername)
