@@ -1,0 +1,66 @@
+<div *ngIf="showForm" [formGroup]="form" #formDir="ngForm" class="form-container">
+  <label for="name">C4RDHOLDER NAME</label>
+  <input formControlName="name" #nameInput (keyup)="setCardFormName(nameInput.value)" type="text"  class="input" placeholder="e.g. Jane Appleseed" maxlength="30" [ngClass]="{'errorInput' : name.invalid && (name.dirty || name.touched)}">
+  <div *ngIf="name.invalid && (name.dirty || name.touched)">
+    <div *ngIf="this.name.errors?.['required']" class="errorMessage">
+      Can't be blank
+    </div>
+  </div>
+
+  <label for="number">C4RD NUMBER</label>
+  <input type="text" formControlName="number" #numberInput (keyup)="setCardFormNumber(numberInput.value)" class="input" placeholder="e.g. 1234 5678 9123 0000" maxlength="19" [ngClass]="{'errorInput' : number.invalid && (number.dirty || number.touched)}">
+  <div *ngIf="number.invalid && (number.dirty || number.touched)">
+    <div *ngIf="this.number.errors?.['required']" class="errorMessage">
+      Can't be blank
+    </div>
+
+    <div *ngIf="this.number.errors?.['numberFormat']" class="errorMessage">
+      Wrong format, numbers only
+    </div>
+  </div>
+
+  <div class="exp-date-and-cvc-wrapper">
+
+    <div class="exp-month-and-exp-year-wrapper">
+      <label>EXP. DATE (MM/YY)</label>
+      <div>
+        <input type="text" formControlName="expDateMonth" #expDateMonthInput (keyup)="setCardFormExpDateMonth(expDateMonthInput.value)" class="input month-and-year-input" placeholder="MM" maxlength="2" [ngClass]="{'errorInput' : expDateMonth.invalid && (expDateMonth.dirty || expDateMonth.touched)}">
+        <input type="text" formControlName="expDateYear" #expDateYearInput (keyup)="setCardFormExpDateYear(expDateYearInput.value)" class="input month-and-year-input" placeholder="YY" maxlength="2" [ngClass]="{'errorInput' : expDateYear.invalid && (expDateYear.dirty || expDateYear.touched)}">
+      </div>
+      <div *ngIf="(expDateMonth.invalid && (expDateMonth.dirty || expDateMonth.touched)) || (expDateYear.invalid && (expDateYear.dirty || expDateYear.touched))">
+        <div *ngIf="this.expDateMonth.errors?.['required'] || this.expDateYear.errors?.['required']" class="errorMessage">
+          Can't be blank
+        </div>
+        <div *ngIf="this.expDateMonth.errors?.['expDateMonthFormat'] || this.expDateYear.errors?.['expDateYearFormat']" class="errorMessage">
+          Type a valid date
+        </div>
+      </div>
+    </div>
+
+    <div class="cvc-wrapper">
+      <label for="cvc">CVC</label>
+      <input type="text" formControlName="cvc" #cvcInput (keyup)="setCardFormCvc(cvcInput.value)" class="input" placeholder="e.g. 123" maxlength="3" [ngClass]="{'errorInput' : cvc.invalid && (cvc.dirty || cvc.touched)}">
+      <div *ngIf="cvc.invalid && (cvc.dirty || cvc.touched)">
+        <div *ngIf="this.cvc.errors?.['required']" class="errorMessage">
+          Can't be blank
+        </div>
+        <div *ngIf="this.cvc.errors?.['cvcFormat']" class="errorMessage">
+          Type a valid cvc
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn" type="submit" [disabled]="form.invalid" (click)="confirm()">Confirm</button>
+</div>
+
+<div *ngIf="!showForm" class="continue-container">
+  <svg class="icon-complete" width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="40" fill="url(#a)"/><path d="M28 39.92 36.08 48l16-16" stroke="#fff" stroke-width="3"/><defs><linearGradient id="a" x1="-23.014" y1="11.507" x2="0" y2="91.507" gradientUnits="userSpaceOnUse"><stop stop-color="#6348FE"/><stop offset="1" stop-color="#610595"/></linearGradient></defs></svg>
+  <div class="msg1">
+    THANK YOU!
+  </div>
+  <div class="msg2">
+    We've added your card details
+  </div>
+  <button class="btn" (click)="reloadPage()">Continue</button>
+</div>

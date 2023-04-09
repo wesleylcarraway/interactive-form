@@ -1,0 +1,168 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 2px;
+  width: 447px;
+  font-size: 0.7em;
+  font-weight: 900;
+}
+
+.form-container label {
+  margin-bottom: 10px;
+  font-weight: 900;
+  margin-top: 25px;
+}
+
+.input {
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid rgb(200, 200, 200);
+  padding-left: 15px;
+  font-size: 1.4em;
+  font-weight: 900;
+}
+
+.exp-date-and-cvc-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.exp-month-and-exp-year-wrapper {
+  display: flex;
+  flex-direction: column;
+  column-gap: 10px;
+  margin-right: 15px;
+}
+
+.cvc-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 218px;
+}
+
+.month-and-year-input {
+  width: 80px;
+  margin-right: 10px;
+}
+
+.btn {
+  background-color: #220930;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.4em;
+  margin-top: 20px;
+  width: 447px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all ease 5ms;
+}
+
+.btn:disabled {
+  background-color: #c0c0c0;
+  cursor:default;
+  opacity: 1;
+}
+
+::placeholder {
+  color: #c0c0c0;
+  opacity: 1;
+}
+
+.input:focus {
+  outline: none;
+  border: 1px solid #4F3B76;
+}
+
+.errorInput {
+  border: 1px solid #d44e4b;
+}
+
+.errorMessage {
+  font-weight: 900;
+  font-size: 1.1em;
+  color: #d44e4b;
+  margin-top: 10px;
+  letter-spacing: normal;
+}
+
+.continue-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 2px;
+  width: 447px;
+  font-size: 0.7em;
+  font-weight: 900;
+}
+
+.icon-complete {
+  margin-bottom: 30px;
+}
+
+.msg1 {
+  font-size: 2.2em;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+.msg2 {
+  font-size: 1.5em;
+  color: #919191;
+  letter-spacing: normal;
+  margin-bottom: 25px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .form-container {
+    left: 60%;
+  }
+
+  .continue-container {
+    left: 60%;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .form-container {
+    width: 300px;
+  }
+
+  .form-container label {
+    font-size: 0.9em;
+  }
+
+  .cvc-wrapper {
+    width: 150px;
+  }
+
+  .month-and-year-input {
+    width: 40px;
+  }
+
+  .btn {
+    width: 300px;
+  }
+
+  .continue-container {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
+  .form-container {
+    margin-left: none;
+    left: 5%;
+  }
+
+  .continue-container {
+    margin-left: none;
+    left: 5%;
+  }
+}
