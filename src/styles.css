@@ -7,4 +7,26 @@
   max-width: 1440px;
 }
 
+@media only screen and (max-width: 1280px) {
+  body {
+    overflow-x: hidden;
+  }
 
+  .example::-webkit-scrollbar {
+    display: none;
+  }
+
+  .example {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .site-grid {
+    margin-top: 0px;
+    overflow-x: hidden;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
+
+}
